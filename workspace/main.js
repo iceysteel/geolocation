@@ -56,8 +56,38 @@ function handleNoGeolocation(errorFlag) {
 
 google.maps.event.addDomListener(window, 'load', initialize);
 
-function main(position){
-  var coordinatesElement = document.getElementById('coordinates');
-  coordinatesElement.innerHTML = userCoordinates; 
+var coordinatesElement = document.getElementById('coordinates');
+var userLatitude;
+var userLongitude;
+var foursquareData;
+var client_id = 'E4FEFMGFDXKEP2NWZTAZEQ2BNLMUIUYPRSDTGDXUSL0XJCY0';
+var client_secret = '0EP1NLCQMZLYDQDCOFTGJZUIFPPCFFLFUB2WHQNUJJZXUZKK';
+var v = '20150617';
+var m = 'foursquare';
+
+function main(){
+  //call the function to get user location and set userLatitude and user longitude
+  navigator.geolocation.getCurrentPosition(logAndSetUserPosition);
   
+  function logAndSetUserPosition(position) {
+    console.log("Latitude: " + position.coords.latitude + "Longitude: " + position.coords.longitude); 
+    userLatitude = position.coords.latitude;
+    userLongitude = position.coords.longitude;
+    
+     
+    $.getJSON('https://api.foursquare.com/v2/venues/explore?ll=' + userLatitude + ',' + userLongitude + 
+    '&section=food&&client_id='+ client_id + '&client_secret=' + client_secret + '&v=' + v + '&m=' + m, function(data){
+      foursquareData = data;
+    });
+    
+    console.log(userLatitude);
+    console.log(userLongitude);
+    
+    //console.log(foursquareData);
+  };
+  
+  console.log(foursquareData);
 };
+
+
+
