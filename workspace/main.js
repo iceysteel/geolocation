@@ -70,24 +70,20 @@ function main(){
   navigator.geolocation.getCurrentPosition(logAndSetUserPosition);
   
   function logAndSetUserPosition(position) {
-    console.log("Latitude: " + position.coords.latitude + "Longitude: " + position.coords.longitude); 
     userLatitude = position.coords.latitude;
     userLongitude = position.coords.longitude;
-    
-     
+    //make the request based on the data we have
     $.getJSON('https://api.foursquare.com/v2/venues/explore?ll=' + userLatitude + ',' + userLongitude + 
     '&section=food&&client_id='+ client_id + '&client_secret=' + client_secret + '&v=' + v + '&m=' + m, function(data){
       foursquareData = data;
+      console.log(foursquareData.response.groups[0].items[0].venue.name);//.items[1].venue.name
     });
-    
     console.log(userLatitude);
     console.log(userLongitude);
     
-    //console.log(foursquareData);
+    //foursquareData.response.groups[1].0.
   };
   
-  console.log(foursquareData);
 };
-
 
 
