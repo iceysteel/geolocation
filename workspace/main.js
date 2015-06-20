@@ -16,8 +16,7 @@ function initialize() {
   // Try HTML5 geolocation
   if(navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
-      var pos = new google.maps.LatLng(position.coords.latitude,
-                                       position.coords.longitude);
+      var pos = new google.maps.LatLng(position.coords.latitude , position.coords.longitude);
 
       var infowindow = new google.maps.InfoWindow({
         map: map,
@@ -64,6 +63,7 @@ var client_id = 'E4FEFMGFDXKEP2NWZTAZEQ2BNLMUIUYPRSDTGDXUSL0XJCY0';
 var client_secret = '0EP1NLCQMZLYDQDCOFTGJZUIFPPCFFLFUB2WHQNUJJZXUZKK';
 var v = '20150617';
 var m = 'foursquare';
+var resturantArray = [];
 
 function main(){
   //call the function to get user location and set userLatitude and user longitude
@@ -74,9 +74,16 @@ function main(){
     userLongitude = position.coords.longitude;
     //make the request based on the data we have
     $.getJSON('https://api.foursquare.com/v2/venues/explore?ll=' + userLatitude + ',' + userLongitude + 
-    '&section=food&&client_id='+ client_id + '&client_secret=' + client_secret + '&v=' + v + '&m=' + m, function(data){
+    '&section=food&&client_id='+ client_id + '&limit=10&client_secret=' + client_secret + '&v=' + v + '&m=' + m, function(data){
       foursquareData = data;
-      console.log(foursquareData.response.groups[0].items[0].venue.name);//.items[1].venue.name
+      //.items[1].venue.name
+      // for(var index = 0; index < foursquareData.response.groups[0].items.length; ++index){
+      //   console.log(foursquareData.response.groups[0].items[index].venue.name);
+      // }
+      //once we have the data call the function to get instagramm stuff
+      //
+      getInstagram();
+      
     });
     console.log(userLatitude);
     console.log(userLongitude);
@@ -86,4 +93,35 @@ function main(){
   
 };
 
+var Insta_Client_id = '12d514b47ed2427b9dc553f3b5bb8e18';
+var Insta_Client_secret = '688b38f9a57d454fbe922bb4e9d04cf4';
 
+
+
+function getInstagram(){
+  //first lets get all information from instagram on each resturaunt using the foursquare id we got earlier
+  for(var index = 0; index < foursquareData.response.groups[0].items.length; ++index){
+         var foursquare_v2_id = foursquareData.response.groups[0].items[index].venue.id;
+         //get instagram data on our resturant
+         $.getJSON('https://api.instagram.com/v1/locations/search?foursquare_v2_id='+ foursquare_v2_id +
+         '&client_id='+ Insta_Client_id +'&client_secret='+ Insta_Client_secret + '&callback=?', function(data){
+           //store data from call in InstagramObj
+           var instagramObj = data.data;
+           //call get
+           getPictureFromid(instagramObj[0].id);
+           
+           var pos = new google.maps.LatLng(instagramObj[0].latitude , instagramObj[0].longitude);
+
+           var infowindow = new google.maps.InfoWindow({
+             map: map,
+             position: pos,
+             content: instagramObj[0].name + ""
+           });
+          
+         });
+  }
+}
+
+function getPictureFromid(placeId){
+  
+}
