@@ -1,40 +1,56 @@
-      html, body {
-        height:100%;
-        margin: 0px;
-        padding: 0px
-      }
-        h1{
-            font-family: sans-serif;
-            text-align: center;
-            font-size: 3em;
-        }
-        
-        #map-canvas{
-            height: 60%;
-            margin-left: 5em;
-            margin-right: 5em;
-        }
-        
-        #button, #button:hover{
-            margin-left: auto;
-            margin-right: auto;
-            padding: 5px;
-            font-family: sans-serif;
-            text-align: center;
-            border: solid 2px;
-            border-radius: 5px;
-            border-color: dodgerblue;
-            width: 10em;
-            background-color: deepskyblue;
-            color: white;
-            
-        }
+html,
+body {
+    height: 100%;
+    margin: 0px;
+    padding: 0px
+}
 
-        #button{
-            background-color: dodgerblue;
-        }
+h1 {
+    font-family: sans-serif;
+    text-align: center;
+    font-size: 3em;
+}
 
-        #button:active{
-            background-color: deepskyblue;
-            border-color: deepskyblue;
-        }
+#map-canvas {
+    height: 60%;
+    margin-left: 5em;
+    margin-right: 5em;
+}
+
+#button,
+#button:hover {
+    margin-left: auto;
+    margin-right: auto;
+    padding: 5px;
+    font-family: sans-serif;
+    text-align: center;
+    border: solid 2px;
+    border-radius: 5px;
+    border-color: dodgerblue;
+    width: 10em;
+    background-color: deepskyblue;
+    color: white;
+    
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+#button {
+    background-color: dodgerblue;
+}
+
+#button:active {
+    background-color: deepskyblue;
+    border-color: deepskyblue;
+}
+
+@media 
+  (max-device-width: 600px) {
+    h1 {
+    font-size: 1.5em;
+    }
+}
