@@ -4,6 +4,11 @@
     <title>Clevrly</title>
     <meta name="viewport" content="initial-scale=1, user-scalable=no">
     <meta charset="utf-8">
+    <meta property="og:url"                content="http://www.clevrly.me/food/" />
+    <meta property="og:title"              content="Clevrly/food" />
+    <meta property="og:description"        content="Use the pictures sitting on instagram to find new tasty food! :)" />
+    <meta property="og:image"              content="http://www.clevrly.me/food/clevrlyfood.png" />
+
     <link rel="stylesheet" href="style.css" type="text/css"/>  
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
@@ -22,14 +27,14 @@
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));</script>
     
-      <div id="title"><h1>Clevrly: harness BIG data to find food</h1></div>
+      <div id="title"><h1>Clevrly: use Instagram to find food</h1></div>
       <p><div id="button" onclick="main()">Time for some #food</div></p>
     <div id="map-canvas"></div>
     
     <div id="info"><p>(Some pictures may be of random people so disregard them)</p></div>
     
     <div id="like">
-      <div class="fb-like" data-href="http://clevrly.me/food/" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+      <div class="fb-like" data-href="http://clevrly.me/food/" data-layout="button_count" data-title='Clevrly find food' data-summary='Use the pictures sitting on instagram to find new tasty food! :)' data-action="like" data-show-faces="true" data-share="true"></div>
     </div>
     
     <!-- needs to be right before /body -->
