@@ -2,7 +2,8 @@ html,
 body {
     height: 100%;
     margin: 0px;
-    padding: 0px
+    padding: 0px;
+    font-family: sans-serif;
 }
 
 h1 {
@@ -46,6 +47,16 @@ h1 {
 #button:active {
     background-color: deepskyblue;
     border-color: deepskyblue;
+}
+
+#like{
+    text-align: center;
+    margin: 0 auto;
+}
+
+#info{
+    text-align: center;
+    font-size: .5em;
 }
 
 @media 

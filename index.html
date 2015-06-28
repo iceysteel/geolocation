@@ -13,12 +13,24 @@
     
     </head>
   <body>
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3&appId=1486349848311029";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+    
       <div id="title"><h1>Clevrly: harness BIG data to find food</h1></div>
       <p><div id="button" onclick="main()">Time for some #food</div></p>
     <div id="map-canvas"></div>
     
-    <div id="coordinates"></div>
+    <div id="info"><p>(Some pictures may be of random people so disregard them)</p></div>
     
+    <div id="like">
+      <div class="fb-like" data-href="http://clevrly.me/food/" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+    </div>
     
     <!-- needs to be right before /body -->
     <script src="main.js"></script>
